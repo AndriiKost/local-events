@@ -11,6 +11,8 @@ import { IEvent, ISession } from '../model/event.model';
 export class EventDetailsComponent implements OnInit {
   event: IEvent;
   addMode: boolean;
+  filterBy = 'all';
+  sortBy = 'votes';
 
   constructor(
     private eventService: EventService,
@@ -36,5 +38,7 @@ export class EventDetailsComponent implements OnInit {
   cancelAddSession() {
     this.addMode = false;
   }
+
+
 
 }

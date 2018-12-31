@@ -8,7 +8,7 @@ import { IEvent } from '../model/event.model';
 export class EventService {
   constructor() { }
   getEvents(): Observable<IEvent[]> {
-    let subject = new Subject<IEvent[]>();
+    const subject = new Subject<IEvent[]>();
     setTimeout(() => { subject.next(EVENTS); subject.complete(); }, 100 );
     return subject;
   }
@@ -21,7 +21,7 @@ export class EventService {
     EVENTS.push(event);
   }
   updateEvent(event) {
-    let index = EVENTS.findIndex(x => x.id = event.id);
+    const index = EVENTS.findIndex(x => x.id = event.id);
     EVENTS[index] = event;
   }
 }

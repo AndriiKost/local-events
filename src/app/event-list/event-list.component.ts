@@ -9,7 +9,6 @@ import { IEvent } from '../model/event.model';
   styleUrls: ['./event-list.component.css']
 })
 export class EventListComponent implements OnInit {
-
   events: IEvent[];
 
   constructor(
