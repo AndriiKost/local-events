@@ -23,6 +23,8 @@ import { DurationPipe } from './pipes/duration.pipe';
 import { JQ_TOKEN } from './shared/jquery.service';
 import { SimpleModalComponent } from './shared/simple-modal/simple-modal.component';
 import { ModalTriggerDirective } from './shared/modal-trigger.directive';
+import { UpvoteComponent } from './upvote/upvote.component';
+import { LocationValidator } from './shared/location-validator.directive';
 
 const toastr: Toastr = window['toastr'];
 const jQuery = window['$'];
@@ -41,7 +43,9 @@ const jQuery = window['$'];
     CollapsibleComponent,
     DurationPipe,
     SimpleModalComponent,
-    ModalTriggerDirective
+    ModalTriggerDirective,
+    UpvoteComponent,
+    LocationValidator
   ],
   imports: [
     BrowserModule,
