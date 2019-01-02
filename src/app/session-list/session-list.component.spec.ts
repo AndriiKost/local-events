@@ -1,25 +1,45 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { SessionListComponent } from './session-list.component';
+import { ISession } from '../model/event.model';
 
 describe('SessionListComponent', () => {
   let component: SessionListComponent;
   let fixture: ComponentFixture<SessionListComponent>;
-
-  beforeEach(async(() => {
-    TestBed.configureTestingModule({
-      declarations: [ SessionListComponent ]
-    })
-    .compileComponents();
-  }));
+  const mockAuthService, mockVoterService;
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(SessionListComponent);
-    component = fixture.componentInstance;
-    fixture.detectChanges();
+    component = new SessionListComponent(mockAuthService, mockVoterService);
   });
 
-  it('should create', () => {
-    expect(component).toBeTruthy();
+  describe('ngOnChanges', () => {
+
+    it('should filter the sessions correctly', () => {
+      component.sessions = <ISession[]>[
+        { name: 'session1', level: 'intermediate' },
+        { name: 'session2', level: 'beginner' },
+        { name: 'session3', level: 'advanced' }];
+        component.filterBy = 'intermediate';
+        component.sortBy = 'name';
+        component.eventId = 3;
+        component.ngOnChanges();
+
+        expect(component.visibleSessions.length).toBe(1);
+    });
+
+    it('should sort the sessions correctly', () => {
+      component.sessions = <ISession[]>[
+        { name: 'session1', level: 'intermediate' },
+        { name: 'session3', level: 'beginner' },
+        { name: 'session2', level: 'advanced' }];
+        component.filterBy = 'all';
+        component.sortBy = 'name';
+        component.eventId = 3;
+        component.ngOnChanges();
+
+        expect(component.visibleSessions[2].name).toBe('session3');
+    });
+
   });
+
 });

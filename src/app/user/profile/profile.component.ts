@@ -2,7 +2,7 @@ import { Component, OnInit, Inject } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { AuthService } from 'src/app/services/auth.service';
 import { Router } from '@angular/router';
-import { TOASTR_TOKEN ,Toastr } from 'src/app/shared/toastr.service';
+import { TOASTR_TOKEN , Toastr } from 'src/app/shared/toastr.service';
 
 @Component({
   selector: 'app-profile',
@@ -46,7 +46,7 @@ export class ProfileComponent implements OnInit {
     this.authService.logOut()
         .subscribe(() => {
           this.router.navigate(['/user/login']);
-        })
+        });
   }
 
   validateLastName() {
