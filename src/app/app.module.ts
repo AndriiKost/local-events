@@ -12,7 +12,6 @@ import { RouterModule } from '@angular/router';
 import { ROUTES } from './routes/routes';
 import { CreateEventComponent } from './create-event/create-event.component';
 import { Error404Component } from './errors/404.component';
-import { EventRouteActivatorService } from './services/event-route-activator.service';
 import { EventListResolverService } from './services/event-list-resolver.service';
 import { AuthService } from './services/auth.service';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
@@ -25,6 +24,8 @@ import { SimpleModalComponent } from './shared/simple-modal/simple-modal.compone
 import { ModalTriggerDirective } from './shared/modal-trigger.directive';
 import { UpvoteComponent } from './upvote/upvote.component';
 import { LocationValidator } from './shared/location-validator.directive';
+import { HttpClientModule } from '@angular/common/http';
+import { EventResolver } from './services/event-resolver.service';
 
 const toastr: Toastr = window['toastr'];
 const jQuery = window['$'];
@@ -51,11 +52,11 @@ const jQuery = window['$'];
     BrowserModule,
     FormsModule,
     ReactiveFormsModule,
+    HttpClientModule,
     RouterModule.forRoot(ROUTES)
   ],
   providers: [
     EventService,
-    EventRouteActivatorService,
     {
       provide: 'canDeactivateCreateEvent',
       useValue: checkDirtyState
@@ -69,7 +70,8 @@ const jQuery = window['$'];
       useValue: jQuery
     },
     EventListResolverService,
-    AuthService
+    AuthService,
+    EventResolver
   ],
   bootstrap: [AppComponent]
 })
