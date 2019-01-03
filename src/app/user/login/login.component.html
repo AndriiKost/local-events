@@ -3,7 +3,7 @@
 <div class="col-md-4">
   <form #loginForm="ngForm" (ngSubmit)="login(loginForm.value)" autocomplete="off" novalidate>
     <div class="form-group" >
-      <label for="userName">User Name:</label>
+      <label for="username">User Name:</label>
       <em *ngIf="loginForm.controls.username?.invalid && (loginForm.controls.username?.touched || mouseOverLogin)">Required</em>
       <input (ngModel)="username" name="username" id="username" required type="text" class="form-control" placeholder="User Name..." />
     </div>

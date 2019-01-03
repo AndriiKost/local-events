@@ -1,4 +1,4 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { ComponentFixture } from '@angular/core/testing';
 
 import { SessionListComponent } from './session-list.component';
 import { ISession } from '../model/event.model';
@@ -6,7 +6,8 @@ import { ISession } from '../model/event.model';
 describe('SessionListComponent', () => {
   let component: SessionListComponent;
   let fixture: ComponentFixture<SessionListComponent>;
-  const mockAuthService, mockVoterService;
+  const mockAuthService;
+  const mockVoterService;
 
   beforeEach(() => {
     component = new SessionListComponent(mockAuthService, mockVoterService);
